@@ -5,7 +5,7 @@ import { Envelope, Key } from 'phosphor-react-native'
 import { Button } from '../components/Button'
 import { Alert, Keyboard, Platform } from 'react-native'
 import { useState } from 'react'
-import { SignInAuth } from '../services/auth'
+import { auth, signInWithEmailAndPassword } from '../services/auth'
 
 
 export function SignIn() {
@@ -18,11 +18,29 @@ export function SignIn() {
 
     function handleSingIn() {
 
+        if (!email || !password) {
+            return Alert.alert('Entrar', 'Informe e-mail e senha')
+        }
         setIsLoading(true)
-        SignInAuth(email, password)
-        setTimeout(() => setIsLoading(false), 3000)
-        Keyboard.dismiss()
+        signInWithEmailAndPassword(auth, email, password)
+            .then(response => {
+                console.log(response)
+            })
+            .catch((error) => {
+                setIsLoading(false)
+                if (error.code === 'auth/invalid-email') {
+                    return Alert.alert('e-mail inválido!', 'Verifique se e-mail está correto')
+                }
+                if (error.code === 'auth/user-not-found') {
+                    return Alert.alert('e-mail ou senha inválido!', 'Verifique e-mail/senha')
+                }
+                if (error.code === 'auth/wrong-password') {
+                    return Alert.alert('e-mail ou senha inválido!', 'Verifique e-mail/senha')
+                }
+                return Alert.alert('Não foi possível entrar')
+            })
     }
+
 
     return (
         <KeyboardAvoidingView

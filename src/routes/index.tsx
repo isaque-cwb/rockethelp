@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import { AppRoutes } from './app.routes'
 import { SignIn } from '../screens/SignIn'
-import { SignInAuth, auth } from '../services/auth'
+import { auth } from '../services/auth'
 import { useEffect, useState } from 'react'
 import { Loading } from '../components/Loading'
 
