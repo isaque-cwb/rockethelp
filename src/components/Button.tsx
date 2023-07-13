@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button as NButton, IIconButtonProps, Heading, useTheme } from 'native-base';
+import { Button as NButton, IButtonProps, Heading, useTheme } from 'native-base';
 
-type ButtonProps = IIconButtonProps & {
+type ButtonProps = IButtonProps & {
     title: string
 }
 

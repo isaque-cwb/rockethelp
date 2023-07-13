@@ -3,20 +3,24 @@ import Logo from '../assets/logo_primary.svg'
 import { Input } from '../components/input'
 import { Envelope, Key } from 'phosphor-react-native'
 import { Button } from '../components/Button'
-import { Keyboard, Platform } from 'react-native'
+import { Alert, Keyboard, Platform } from 'react-native'
 import { useState } from 'react'
-
+import { SignInAuth } from '../services/auth'
 
 
 export function SignIn() {
     const { colors } = useTheme()
-
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+
+
 
     function handleSingIn() {
-        setName('')
-        setPassword('')
+
+        setIsLoading(true)
+        SignInAuth(email, password)
+        setTimeout(() => setIsLoading(false), 3000)
         Keyboard.dismiss()
     }
 
@@ -35,8 +39,8 @@ export function SignIn() {
                 mb={3}
                 InputLeftElement={<Icon as={<Envelope color={colors.gray[300]} />} ml={4} />}
                 keyboardType='email-address'
-                onChangeText={setName}
-                value={name}
+                onChangeText={setEmail}
+                value={email}
             />
             <Input
                 placeholder='Senha'
@@ -51,6 +55,7 @@ export function SignIn() {
                 title='Entrar'
                 w='full'
                 onPress={handleSingIn}
+                isLoading={isLoading}
             />
 
         </KeyboardAvoidingView >
