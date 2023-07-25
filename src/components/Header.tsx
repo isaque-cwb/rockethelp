@@ -20,11 +20,14 @@ export function Header({ title, ...rest }: Props) {
             w={'full'}
             justifyContent={'space-between'}
             alignItems={'center'}
-            pb={6}
-            pt={12}
+            pt={8}
             {...rest}
         >
-            <IconButton icon={<CaretLeft color={colors.gray[200]} size={24} />} onPress={handleGoBack} />
+            <IconButton
+
+                height={60}
+                width={60}
+                icon={<CaretLeft color={colors.gray[200]} size={24} />} onPress={handleGoBack} />
             <Heading color={'gray.100'} textAlign={'center'} fontSize={'lg'} flex={1} ml={-6} >
                 {title}
             </Heading>

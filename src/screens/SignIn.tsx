@@ -1,4 +1,4 @@
-import { VStack, Heading, Icon, useTheme, KeyboardAvoidingView, keyboardDismissHandlerManager } from 'native-base'
+import { VStack, Heading, Icon, useTheme, KeyboardAvoidingView } from 'native-base'
 import Logo from '../assets/logo_primary.svg'
 import { Input } from '../components/input'
 import { Envelope, Key } from 'phosphor-react-native'
@@ -24,7 +24,7 @@ export function SignIn() {
         setIsLoading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then(response => {
-                console.log(response)
+                //console.log(response)
             })
             .catch((error) => {
                 setIsLoading(false)
