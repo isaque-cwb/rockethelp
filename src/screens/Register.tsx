@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { VStack, KeyboardAvoidingView } from 'native-base';
 import { Header } from '../components/Header';
 import { Input } from '../components/input';
@@ -39,6 +39,7 @@ export function Register() {
 
         })
     }
+
 
 
     return (
