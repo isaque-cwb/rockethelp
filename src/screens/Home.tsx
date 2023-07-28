@@ -85,7 +85,7 @@ export function Home() {
                         Meus Chamados
                     </Heading>
                     <Text color={colors.gray[200]}  >
-                        3
+                        {orders.length}
                     </Text>
                 </HStack>
                 <HStack space={3} mb={8}>
